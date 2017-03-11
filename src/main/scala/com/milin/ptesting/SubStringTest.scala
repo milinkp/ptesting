@@ -1,6 +1,6 @@
 package com.milin.ptesting
 
-import org.apache.spark.sql.Column
+import org.apache.spark.sql.{Column, DataFrame}
 import org.apache.spark.sql.functions._
 
 /**
@@ -9,8 +9,9 @@ import org.apache.spark.sql.functions._
 object SubStringTest {
 
 
-  def getSubText(column:String,searchWord:String,limit:Int):Column={
-    substring(split(col(column),searchWord).getItem(1),0,limit)
+  def getSubText(df:DataFrame,nColName:String,column:String,searchWord:String,limit:Int,offSet:Int=0)={
+    df.withColumn(nColName,substring(
+      split(col(column),searchWord).getItem(1),offSet,limit))
   }
 
 }

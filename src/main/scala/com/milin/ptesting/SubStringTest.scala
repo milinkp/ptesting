@@ -13,6 +13,7 @@ object SubStringTest {
     df.withColumn(nColName,substring(
       split(col(column),searchWord).getItem(1),offSet,limit))
     println("checking branch rebase")
+    println("added some more changes")
   }
 
 }
